@@ -12,9 +12,9 @@ function getFormatedTime() {
     // console.log(newdate);
     return `${newdate[1]} ${newdate[0]}, ${date[1]}`;
 }
-// getFormatedTime();
-document.getElementById('check').addEventListener('click', (e) => {
-    // e.preventDefault()
+
+document.getElementById('check').addEventListener('submit', (e) => {
+    e.preventDefault()
     let desc = document.querySelector('#desc').value;
     let select = document.querySelector('#select').value;
     let amt = document.querySelector('#value').value;

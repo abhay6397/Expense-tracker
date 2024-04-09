@@ -28,7 +28,7 @@ body{
     color: white;
 }
 .income-expenses{
-    width: 400px;
+    width: 60%;
     display: flex;
     justify-content: space-between;
     margin-top: 60px;
@@ -52,6 +52,7 @@ body{
     margin-top: 10px;
     display: flex;
     justify-content:center;
+    flex-wrap: wrap;
 }
 .desc-container div{
     padding: 5px;
@@ -153,5 +154,12 @@ body{
         overflow: hidden;
         height: 100%;
     }
+    .income-expenses{
+        width: 60%;
+    }
+    #desc{
+        width: 30vw;
+    }
+  
     
 }
