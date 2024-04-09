@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income-Expense tracker</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+        integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="total">
+                <p>Total balance</p>
+                <h1>0</h1>
+            </div>
+            <div class="income-expenses">
+                <div class="income">
+                    <h1>$0</h1>
+                    <p>Income</p>
+                </div>
+                <div class="expenses">
+                    <h1>$0</h1>
+                    <p>Expenses</p>
+                </div>
+            </div> 
+        </div>
+        <div class="desc-container">
+            <div class="select">
+                <select name="" id="select">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                </select>
+            </div>
+            <div><input id="desc" type="text" placeholder="Add description"></div>
+            <div><input id="value" type="number" placeholder="value"></div>
+            <div><button id="check"><i class="ri-checkbox-circle-line"></i></button></div>
+            <div class="delete"><button id="delete"><i class=" ri-eraser-line"></i></button>
+               <div class="span"> <span>Clear history</span></div>
+            </div>
+        </div>
+
+        <div class="card-container">
+        </div>
+    </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

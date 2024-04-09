@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Tilt Neon", sans-serif;
+}
+body{
+    height: 100%;
+    width: 100%;
+}
+.mian{
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.header{
+    height: 20vw;
+    width: 100%;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.total{
+    text-align: center;
+    color: white;
+}
+.income-expenses{
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+.income-expenses div{
+  background-color: whitesmoke;
+  height: 4.5rem;
+  width: 9rem;
+  border-radius: 3px;
+  text-align: center;
+  padding-top: 4px;
+  box-shadow: 0 0 2px gray;
+}
+.income h1{
+    color: green;
+}
+.expenses h1{
+    color: red;
+}
+.desc-container{
+    margin-top: 10px;
+    display: flex;
+    justify-content:center;
+}
+.desc-container div{
+    padding: 5px;
+}
+#select{
+    height:1.8rem;
+    width: 2.5rem;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 2px gray;
+    font-size: 1rem;   
+}
+#desc{
+    height:1.8rem;
+    width:15vw;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 2px gray;
+    font-size: 1rem;   
+    padding-left: 10px;
+}
+#value{
+    height:1.8rem;
+    width: 4rem;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 2px gray;
+    font-size: 1rem;
+    padding-left: 10px   
+}
+#check{
+    background-color: white;
+    height:1.8rem;
+    width: 2.5rem;
+    border: none;
+    outline: none;
+    color: rgb(7, 133, 159);
+    font-size: 1.9rem;
+    cursor: pointer;
+
+}
+#delete{
+    background-color: white;
+    height:1.8rem;
+    width: 2.5rem;
+    border: none;
+    outline: none;
+    color: gray;
+    font-size: 1.9rem;
+    cursor: pointer;
+}
+.card-container{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    overflow-y: auto;
+    /* background-color: red; */
+
+}
+.card{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 4px gray;
+    border-radius: 8px;
+    width: 80%;
+    height: 100px;
+    padding: 20px;
+    position: relative;
+    margin: 5px 0px;
+}
+.card h2{
+ position: absolute;
+ color: green;
+ right: 10px;
+ bottom:40px;
+}
+.delete .span{
+   visibility: hidden;
+}
+#delete:hover +.span{
+    visibility: visible;
+  background-color: rgb(42, 39, 39);
+  color: white;
+  outline: none;
+  border: none;
+  border-radius:2px;
+
+}
+
+
+@media (max-width:600px) {
+    .header{
+        height: 60vw;
+    }
+    .card-container{
+        overflow: hidden;
+        height: 100%;
+    }
+    
+}
