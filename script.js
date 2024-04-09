@@ -13,7 +13,7 @@ function getFormatedTime() {
     return `${newdate[1]} ${newdate[0]}, ${date[1]}`;
 }
 
-document.getElementById('check').addEventListener('submit', (e) => {
+document.querySelector('.e-form').addEventListener('submit', (e) => {
     e.preventDefault()
     let desc = document.querySelector('#desc').value;
     let select = document.querySelector('#select').value;
