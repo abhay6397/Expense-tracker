@@ -52,6 +52,7 @@ body{
     margin-top: 10px;
     display: flex;
     justify-content:center;
+    align-items: center;
     flex-wrap: wrap;
 }
 .desc-container div{
@@ -128,7 +129,6 @@ body{
 }
 .card h2{
  position: absolute;
- color: green;
  right: 10px;
  bottom:40px;
 }
@@ -162,4 +162,12 @@ body{
     }
   
     
+}
+
+.red{
+    color: red;
+}
+
+.green{
+    color:green
 }

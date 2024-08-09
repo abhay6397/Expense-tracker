@@ -29,7 +29,7 @@ function addInfo(desc, select, amt) {
     var card = ` <div class="card">
             <h3>${desc}</h3>
             <p>${date}</p>
-            <h2>${select}$${seprator(amt)}</h2>`;
+            <h2 class=${addClassColor(select)} >${select}$${seprator(amt)}</h2>`;
     // totalbalance();
     // colorchange(); 
     const container = document.querySelector('.card-container');
@@ -113,9 +113,10 @@ showtotalbalance();
 
 function resetform() {
     document.querySelector('#desc').value = "";
-    document.querySelector('#select').value = "+";
+    // document.querySelector('#select').value = "+";
     document.querySelector('#value').value = "";
 }
+
 
 function showlsdata() {
     const items = getlocalstorage();
@@ -123,7 +124,7 @@ function showlsdata() {
         var card = ` <div class="card">
     <h3>${val.desc}</h3>
     <p>${val.date}</p>
-    <h2>${val.select}$${seprator(val.amt)}</h2>`;
+    <h2 class=${addClassColor(val.select)} >${val.select}$${seprator(val.amt)}</h2>`;
         const container = document.querySelector('.card-container');
         container.insertAdjacentHTML("afterBegin", card);
     });
@@ -131,7 +132,7 @@ function showlsdata() {
 showlsdata();
 
 document.querySelector('#delete').addEventListener('click',()=>{
-    localStorage.clear();
+    localStorage.removeItem('items');
     window.location.reload();
     
 })
@@ -141,3 +142,10 @@ function seprator(amount){
     return amount.toLocaleString();
 };
 
+function addClassColor(sing){
+    if("+"===sing){
+        return('green')
+    }else{
+        return('red')
+    }
+}
