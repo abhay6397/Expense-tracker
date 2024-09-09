@@ -171,3 +171,18 @@ body{
 .green{
     color:green
 }
+
+.img{
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 999;
+    height: 53px;
+    width: 50px;
+    background-image: url("https://static-00.iconduck.com/assets.00/google-wallet-icon-1922x2048-01x2retk.png");
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    /* filter: brightness(1.2) contrast(1.2); */
+    /* mix-blend-mode: multiply; */
+}
