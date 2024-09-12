@@ -69,7 +69,7 @@ function showtotalIncome() {
         }
     }
     // console.log(totalIncome);
-    document.querySelector('.income h1').innerText = `$${totalIncome}`;
+    document.querySelector('.income h1').innerText = `$${seprator(totalIncome)}`;
 }
 showtotalIncome();
 function showtotalExpenses() {
@@ -82,7 +82,7 @@ function showtotalExpenses() {
         }
     }
     // console.log(totalExpenses);
-    document.querySelector('.expenses h1').innerText = `$${totalExpenses}`;
+    document.querySelector('.expenses h1').innerText = `$${seprator(totalExpenses)}`;
 }
 showtotalExpenses();
 
@@ -99,7 +99,7 @@ function showtotalbalance() {
             total -= parseInt(item.amt);
         }
     }
-    totalamt.innerText = total;
+    totalamt.innerText = seprator(total);
     // console.log(total);
     if (total < 0) {
         document.querySelector('.header').style.backgroundColor = 'red';
