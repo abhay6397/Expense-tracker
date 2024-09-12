@@ -22,6 +22,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position:relative;
 }
 .total{
     text-align: center;
@@ -160,7 +161,9 @@ body{
     #desc{
         width: 30vw;
     }
-  
+    .income-expenses{
+        width: 90%;
+    }
     
 }
 
@@ -173,7 +176,7 @@ body{
 }
 
 .img{
-    position: fixed;
+    position: absolute;
     top: 15px;
     left: 15px;
     z-index: 999;
