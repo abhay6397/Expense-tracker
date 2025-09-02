@@ -57,6 +57,7 @@ function setLocalstorage(desc, date, amt, select, edited) {
     items.push({ desc, date, amt, select, edited })
 
     localStorage.setItem("items", JSON.stringify(items));
+    window.location.reload();
 
 }
 
@@ -196,12 +197,12 @@ function modifyValue(){
          const originalCard = btn.parentElement.parentElement;
          const index = btn.parentElement.parentElement.dataset.index;
          const items = getlocalstorage();
-         console.log(items);
+        //  console.log(items);
 
-         console.log(index)
-         items.pop(index);
+        //  console.log(index)
+         items.splice(index, 1);
           
-         console.log(items);
+        //  console.log(items);
 
          localStorage.setItem("items", JSON.stringify(items));
 

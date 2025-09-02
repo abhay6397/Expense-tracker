@@ -184,9 +184,9 @@ body{
     top: 15px;
     left: 15px;
     z-index: 999;
-    height: 53px;
-    width: 50px;
-    background-image: url("https://static-00.iconduck.com/assets.00/google-wallet-icon-1922x2048-01x2retk.png");
+    height: 110px;
+    width: 110px;
+    background-image: url("icon2.png");
     background-position: center;
     background-size:cover;
     background-repeat: no-repeat;
