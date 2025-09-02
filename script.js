@@ -18,23 +18,24 @@ document.querySelector('.e-form').addEventListener('submit', (e) => {
     let desc = document.querySelector('#desc').value;
     let select = document.querySelector('#select').value;
     let amt = document.querySelector('#value').value;
+    let edited = false;
 
     if (desc.length > 0 && amt.length > 0) {
-        addInfo(desc, select, amt);
+        addInfo(desc, select, amt, edited);
         resetform()
     }
 })
-function addInfo(desc, select, amt) {
+function addInfo(desc, select, amt, edited) {
     const date = getFormatedTime();
     var card = ` <div class="card">
             <h3>${desc}</h3>
             <p>${date}</p>
-            <h2 class=${addClassColor(select)} >${select}$${seprator(amt)}</h2>`;
+            <h2 class=${addClassColor(select)} >${select}₹${seprator(amt)}</h2>`;
     // totalbalance();
     // colorchange(); 
     const container = document.querySelector('.card-container');
     container.insertAdjacentHTML("afterBegin", card);
-    setLocalstorage(desc, date, amt, select)
+    setLocalstorage(desc, date, amt, select, edited)
     showtotalIncome();
     showtotalExpenses();
     showtotalbalance();
@@ -49,11 +50,11 @@ function getlocalstorage() {
     }
     return items;
 }
-function setLocalstorage(desc, date, amt, select) {
+function setLocalstorage(desc, date, amt, select, edited) {
     let items = getlocalstorage();
     // let items = JSON.parse(localStorage.getItem('items') || '[]');
 
-    items.push({ desc, date, amt, select })
+    items.push({ desc, date, amt, select, edited })
 
     localStorage.setItem("items", JSON.stringify(items));
 
@@ -69,7 +70,7 @@ function showtotalIncome() {
         }
     }
     // console.log(totalIncome);
-    document.querySelector('.income h1').innerText = `$${seprator(totalIncome)}`;
+    document.querySelector('.income h1').innerText = `₹${seprator(totalIncome)}`;
 }
 showtotalIncome();
 function showtotalExpenses() {
@@ -82,7 +83,7 @@ function showtotalExpenses() {
         }
     }
     // console.log(totalExpenses);
-    document.querySelector('.expenses h1').innerText = `$${seprator(totalExpenses)}`;
+    document.querySelector('.expenses h1').innerText = `₹${seprator(totalExpenses)}`;
 }
 showtotalExpenses();
 
@@ -120,11 +121,14 @@ function resetform() {
 
 function showlsdata() {
     const items = getlocalstorage();
-    items.forEach(val => {
-        var card = ` <div class="card">
+    items.forEach((val, index) => {
+        var card = ` <div data-index="${index}" class="card">
     <h3>${val.desc}</h3>
-    <p>${val.date}</p>
-    <h2 class=${addClassColor(val.select)} >${val.select}$${seprator(val.amt)}</h2>`;
+    <p>${val.date} <span class ="edit">${val.edited?'Edited':''}</span></p>
+    
+    <h2 data-amt ="${seprator(val.amt)}" class=${addClassColor(val.select)}> ${val.select}₹${seprator(val.amt)}</h2>
+    <div> <button class='edit_btn'>Edit</button>
+     <button class='delete_btn'>Delete</button> </div>`;
         const container = document.querySelector('.card-container');
         container.insertAdjacentHTML("afterBegin", card);
     });
@@ -142,10 +146,95 @@ function seprator(amount){
     return amount.toLocaleString();
 };
 
-function addClassColor(sing){
-    if("+"===sing){
+function addClassColor(sign){
+    if("+"===sign){
         return('green')
     }else{
         return('red')
     }
 }
+
+function modifyValue(){
+    document.addEventListener('click',function(e){
+        //edit btn
+     if(e.target.classList.contains('edit_btn')){
+        // let items = getlocalstorage();
+        // console.log(items)
+         const btn = e.target;
+         const originalCard = btn.parentElement.parentElement;
+         const index = btn.parentElement.parentElement.dataset.index;
+
+        //  console.log(items[index].desc)
+          const description = originalCard.querySelector('h3').innerText;
+          const Amount = originalCard.querySelector('h2').dataset.amt;
+         console.log(description)
+
+         const editCard = document.createElement('div');
+         editCard.classList.add('card', 'edit_card');
+         editCard.dataset.index = `${index}`
+         editCard.innerHTML = `<div>
+         <label for="desc">description:&nbsp;</label>
+        <input type="text" value=${description} class="desc" name="desc">
+        </div>
+        <div>
+        <label for="amount">Amount: &nbsp; &nbsp; &nbsp; &nbsp;</label>
+        <input  type="text" value=${Amount} class="amount" name="amount">
+        </div>
+        <div>
+          <button class="save_btn">Save</button>
+          <button class="cancle_btn">Cancle</button>
+          </div>`;
+
+        originalCard.replaceWith(editCard)
+
+
+     }
+
+    //  delete btn
+       if(e.target.classList.contains('delete_btn')){
+         const btn = e.target;
+         const originalCard = btn.parentElement.parentElement;
+         const index = btn.parentElement.parentElement.dataset.index;
+         const items = getlocalstorage();
+         console.log(items);
+
+         console.log(index)
+         items.pop(index);
+          
+         console.log(items);
+
+         localStorage.setItem("items", JSON.stringify(items));
+
+         originalCard.remove();
+        
+     }
+
+    //  save btn
+     if(e.target.classList.contains('save_btn')){
+        let items = getlocalstorage();
+        // console.log(items)
+         const btn = e.target;
+         const originalCard = btn.parentElement.parentElement;
+         const index = btn.parentElement.parentElement.dataset.index;
+         
+         const newdesc  = originalCard.querySelector('.desc').value;
+         const newAmount = originalCard.querySelector('.amount').value;
+         const date = getFormatedTime();
+        
+         items[index].date = date;
+         items[index].desc = newdesc;
+         items[index].amt = newAmount;
+         items[index].edited = true;
+
+         localStorage.setItem("items", JSON.stringify(items));
+         window.location.reload();
+
+        
+     }
+     if(e.target.classList.contains('cancle_btn')){
+         window.location.reload();
+     }
+    })
+}
+
+modifyValue();
